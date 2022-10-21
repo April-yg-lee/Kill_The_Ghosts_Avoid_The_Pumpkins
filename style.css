@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  /* font-family: 'Fuzzy Bubbles', cursive; */
+  font-family: "Libre Baskerville", serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(34, 34, 34);
+}
+
+.readySection {
+  background-image: url("./img/bg1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 900px;
+  height: 550px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.readySection p {
+  color: white;
+  font-size: 35px;
+}
+
+.intro {
+  width: 500px;
+  height: 250px;
+  /* border: 2px solid red; */
+  transform: translate(200px, 180px);
+}
+
+.intro button {
+  margin-top: 7%;
+  font-size: 30px;
+  background-color: orange;
+  border-radius: 10px;
+  padding: 4%;
+  border: 5px solid black;
+}
+
+.intro button:hover {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.1);
+}
+
+.bgSection {
+  background-image: url("./img/bg1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 900px;
+  height: 550px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  display: none;
+}
+
+.playSection {
+  width: 200px;
+  height: 150px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  padding: 1%;
+}
+
+.playBtn,
+.pauseBtn {
+  font-size: 40px;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(255, 255, 40);
+  padding: 3%;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in;
+}
+
+.playBtn:hover,
+.pauseBtn:hover,
+.replayBtn:hover {
+  transform: scale(1.1);
+}
+
+.pauseBtn {
+  width: 0;
+  height: 0;
+  padding: 0;
+  font-size: 0;
+}
+
+.timer {
+  text-align: center;
+  font-size: 35px;
+  width: 120px;
+  height: 40px;
+  background-color: white;
+  border-radius: 10px;
+  user-select: none;
+}
+
+.counter {
+  width: 40px;
+  height: 40px;
+  padding: 2%;
+  border-radius: 50%;
+  background-color: orange;
+  color: white;
+  text-align: center;
+  font-size: 35px;
+  user-select: none;
+}
+
+.beforeGame,
+.replaySection,
+.lostSection,
+.wonSection {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 100px;
+  border-radius: 10px;
+  font-size: 30px;
+  padding-top: 3%;
+  display: none;
+  z-index: 1;
+}
+
+.beforeGame {
+  padding: 3%;
+  width: 400px;
+  height: 270px;
+}
+
+.replayBtn {
+  background-color: yellow;
+  color: black;
+  padding: 2%;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in;
+}
+
+.gameSection {
+  width: 100%;
+  height: 380px;
+  /* translate: 0px 250px; translate, transform 둘다 사용 가능 */
+  transform: translateY(40%);
+  display: none;
+  position: absolute;
+}
+
+.GhostImg,
+.PumpkinImg {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  cursor: pointer;
+  z-index: 0;
+}
+
+.bugImg:hover,
+.carrImg:hover {
+  transform: scale(1.1);
+}

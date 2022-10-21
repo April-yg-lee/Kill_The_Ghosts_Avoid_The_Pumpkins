@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KILL THE GHOSTS!</title>
+  <link rel="icon" type="image/x-icon" href="./img/pumpkin3.png">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="./function.js" defer></script>
+</head>
+
+<body>
+  <section class="readySection">
+    <article class="intro">
+      <p>KILL THE GHOSTS!👻<br>
+         AVOID THE PUMPKINS!
+      <button class="introBtn">GAME START</button>
+    </article>
+  </section>
+  <section class="bgSection">
+    <section class="playSection">
+      <i class="fa-solid fa-play playBtn"></i>
+      <i class="fas fa-stop pauseBtn"></i>
+      <div class="timer">
+        0:10
+      </div>
+      <div class="counter">
+        0
+      </div>
+    </section>
+    <section class="beforeGame">
+      <p>Click play button👆 Whenever you're ready</p><br>
+      <p>1. Kill ghosts only👻</p>
+      <p>2. Don't kill pumpkins🎃</p>
+      <p>3. Time limit is 10 secs</p>
+    </section>
+    <section class="replaySection">
+      <i class="fa-sharp fa-solid fa-reply replayBtn originReplay"></i>
+      <p>Replay❓</p>
+    </section>
+    <section class="lostSection">
+      <i class="fa-sharp fa-solid fa-reply replayBtn lostReplay"></i>
+      <p>You Lost!😢</p>
+    </section>
+    <section class="wonSection">
+      <i class="fa-sharp fa-solid fa-reply replayBtn wonReplay"></i>
+      <p>You Won!😆</p>
+    </section>
+    <section class="gameSection">
+    </section>
+  </section>
+  <!-- Next time: create only one element for replayBox, and don't use display:none, then you better use class(add/remove) to show and hide.bgSection -->
+</body>
+
+</html>
