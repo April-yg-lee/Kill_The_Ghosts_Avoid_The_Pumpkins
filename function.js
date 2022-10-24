@@ -1,8 +1,9 @@
 "use strict";
-const introBtn = document.querySelector('.introBtn');
-const readySection = document.querySelector('.readySection');
-const bgSection = document.querySelector('.bgSection');
-const beforeGame = document.querySelector('.beforeGame');
+
+const introBtn = document.querySelector(".introBtn");
+const readySection = document.querySelector(".readySection");
+const bgSection = document.querySelector(".bgSection");
+const beforeGame = document.querySelector(".beforeGame");
 let counterBtn = document.querySelector(".counter");
 const playBtn = document.querySelector(".playBtn");
 const pauseBtn = document.querySelector(".pauseBtn");
@@ -10,28 +11,29 @@ const replayBox = document.querySelector(".replaySection");
 const lostBox = document.querySelector(".lostSection");
 const wonBox = document.querySelector(".wonSection");
 const gameSection = document.querySelector(".gameSection");
+
 let timer = document.querySelector(".timer");
 let originReplay = document.querySelector(".originReplay");
 let lostReplay = document.querySelector(".lostReplay");
 let wonReplay = document.querySelector(".wonReplay");
 
-const clickBeforeGameSound = new Audio('./sound/clickBeforeGame.wav');
+const clickBeforeGameSound = new Audio("./sound/clickBeforeGame.wav");
 const alertSound = new Audio("./sound/alert.wav");
 const bgSound = new Audio("./sound/bg2.wav");
 const ghostSound = new Audio("./sound/ghostClick.mp3");
 const winSound = new Audio("./sound/won.wav");
-const lostSound = new Audio('./sound/lost.wav');
+const lostSound = new Audio("./sound/lost.wav");
 
 const numberOfPumpkins = 10;
 const numberOfGhosts = 10;
 let timeLeft = 10;
 
-introBtn.addEventListener('click', ()=> {
+introBtn.addEventListener("click", () => {
   readySection.style.display = "none";
-  bgSection.style.display = 'flex';
-  beforeGame.style.display = 'flex';
+  bgSection.style.display = "flex";
+  beforeGame.style.display = "flex";
   playSound(clickBeforeGameSound);
-})
+});
 
 playBtn.addEventListener("click", () => {
   playBtn.style.display = "none";
@@ -39,47 +41,62 @@ playBtn.addEventListener("click", () => {
   pauseBtn.style.height = 40 + "px";
   pauseBtn.style.padding = 3 + "%";
   pauseBtn.style.fontSize = 40 + "px";
-  beforeGame.style.display = 'none';
+  beforeGame.style.display = "none";
   gameSection.style.display = "block";
 
   refreshGhostCount();
   timerStart();
   playSound(bgSound);
-
-  pauseBtn.addEventListener("click", () => {
-    replayBox.style.display = "block";
-    lostBox.style.display = "none";
-    clearInterval();
-    timeLeft = 0;
-    deactivatePumpkinsGhosts();
-    stopSound(bgSound);
-    playSound(alertSound);
-  });
-
   randomPosition();
   GhostCounter();
   GhostFind();
-
-  // GhostFindAll();
   whenPumpkinClicked();
 });
+
+pauseBtn.addEventListener("click", () => {
+  replayBox.style.display = "block";
+  lostBox.style.display = "none";
+  clearInterval();
+  timeLeft = 0;
+  deactivatePumpkinsGhosts();
+  stopSound(bgSound);
+  playSound(alertSound);
+});
+
+
+lostReplay.addEventListener("click", () => {
+  lostBox.style.display = "none";
+  gameRestart();
+});
+
+wonReplay.addEventListener("click", () => {
+  wonBox.style.display = "none";
+  gameRestart();
+});
+
+originReplay.addEventListener("click", () => {
+  replayBox.style.display = "none";
+  gameRestart();
+});
+
 
 let Pumpkin = [];
 let item;
 
 function whenPumpkinClicked() {
   Pumpkin.forEach((array) => {
-    array.addEventListener("click", (event) => {
+    array.addEventListener("click", () => {
       lostBox.style.display = "block";
       timeLeft = 0;
       deactivatePumpkinsGhosts();
       playSound(lostSound);
       stopSound(bgSound);
-      pauseBtn.style.pointerEvents = 'none';
+      pauseBtn.style.pointerEvents = "none";
     });
   });
 }
 
+// create pumpkin automatically using for loop and push into Pumpkin array
 function createPumpkin(className, count, imgPath) {
   for (let i = 0; i < count; i++) {
     item = document.createElement("img");
@@ -94,6 +111,7 @@ function createPumpkin(className, count, imgPath) {
 
 let Ghost = [];
 
+// create ghosts automatically using for loop and push into ghosts array
 function createGhost(className, count, imgPath) {
   for (let i = 0; i < count; i++) {
     item = document.createElement("img");
@@ -104,12 +122,14 @@ function createGhost(className, count, imgPath) {
   }
 }
 
+// reset(remove) pumpkin and ghosts on gameSection before starting new game
 function removePumpkinAndGhosts() {
   Ghost = [];
   Pumpkin = [];
   gameSection.innerHTML = "";
 }
 
+// make pumpkins and ghosts not clickable
 function deactivatePumpkinsGhosts() {
   Pumpkin.forEach((array) => {
     array.style.pointerEvents = "none";
@@ -119,6 +139,7 @@ function deactivatePumpkinsGhosts() {
   });
 }
 
+// position pumpkin and ghosts randomly 
 function randomPosition() {
   createGhost("GhostImg", numberOfGhosts, "./img/ghost1.png");
   createPumpkin("PumpkinImg", numberOfPumpkins, "./img/pumpkin1.png");
@@ -145,11 +166,9 @@ function randomPosition() {
   Pumpkin.forEach((array) => {
     let thisDiv = array;
 
-    // get random numbers for each element
     let randomTop = getRandomNumber(winHeight);
     let randomLeft = getRandomNumber(winWidth);
 
-    // update top and left position
     thisDiv.style.top = randomTop + "px";
     thisDiv.style.left = randomLeft + "px";
 
@@ -202,7 +221,7 @@ function GhostCounter() {
 function checker() {
   if (Ghost_COUNT == 0) {
     wonBox.style.display = "block";
-    pauseBtn.style.pointerEvents = 'none';
+    pauseBtn.style.pointerEvents = "none";
     timeLeft = 0;
     deactivatePumpkinsGhosts();
     playSound(winSound);
@@ -210,6 +229,7 @@ function checker() {
   }
 }
 
+// when user click ghosts, ghost's gonna be killed(disappeared) one by one
 function GhostFind() {
   Ghost.forEach((array) => {
     array.addEventListener("click", (event) => {
@@ -230,8 +250,8 @@ function gameRestart() {
   GhostFind();
   playSound(bgSound);
   refreshGhostCount();
-  pauseBtn.style.pointerEvents = 'auto';
-} 
+  pauseBtn.style.pointerEvents = "auto";
+}
 
 function playSound(sound) {
   sound.currentTime = 0;
@@ -241,18 +261,3 @@ function playSound(sound) {
 function stopSound(sound) {
   sound.pause();
 }
-
-lostReplay.addEventListener("click", () => {
-  lostBox.style.display = "none";
-  gameRestart();
-});
-
-wonReplay.addEventListener("click", () => {
-  wonBox.style.display = "none";
-  gameRestart();
-});
-
-originReplay.addEventListener("click", () => {
-  replayBox.style.display = "none";
-  gameRestart();
-});
