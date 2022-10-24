@@ -37,10 +37,7 @@ introBtn.addEventListener("click", () => {
 
 playBtn.addEventListener("click", () => {
   playBtn.style.display = "none";
-  pauseBtn.style.width = 40 + "px";
-  pauseBtn.style.height = 40 + "px";
-  pauseBtn.style.padding = 3 + "%";
-  pauseBtn.style.fontSize = 40 + "px";
+  pauseBtn.style.display = 'block';
   beforeGame.style.display = "none";
   gameSection.style.display = "block";
 
