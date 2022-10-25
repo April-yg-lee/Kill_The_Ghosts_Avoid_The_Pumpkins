@@ -59,8 +59,7 @@ playBtn.addEventListener("click", () => {
 pauseBtn.addEventListener("click", () => {
   replayBox.style.display = "block";
   lostBox.style.display = "none";
-  clearInterval();
-  timeLeft = 0;
+  clearInterval(timer);
   deactivatePumpkinsGhosts();
   stopSound(bgSound);
   playSound(alertSound);
@@ -79,8 +78,9 @@ wonReplay.addEventListener("click", () => {
 
 originReplay.addEventListener("click", () => {
   replayBox.style.display = "none";
-  initCounts();
-  gameRestart();
+  activatePumpkinsGhosts();
+  timerStart();
+  playSound(bgSound);
 });
 
 function whenPumpkinClicked() {
@@ -134,6 +134,16 @@ function deactivatePumpkinsGhosts() {
   });
   Ghost.forEach((array) => {
     array.style.pointerEvents = "none";
+  });
+}
+
+// make pumpkins and ghosts clickable
+function activatePumpkinsGhosts() {
+  Pumpkin.forEach((array) => {
+    array.style.pointerEvents = "auto";
+  });
+  Ghost.forEach((array) => {
+    array.style.pointerEvents = "auto";
   });
 }
 
@@ -238,7 +248,6 @@ function GhostFind() {
 
 function gameRestart() {
   levelBtn.innerHTML = `Level ${level}`;
-  console.log(level);
   counterBtn.innerHTML = 0;
   timeLeft = 10;
   clearInterval(timer);
