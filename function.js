@@ -5,13 +5,13 @@ const readySection = document.querySelector(".readySection");
 const bgSection = document.querySelector(".bgSection");
 const beforeGame = document.querySelector(".beforeGame");
 let counterBtn = document.querySelector(".counter");
+let levelBtn = document.querySelector(".level");
 const playBtn = document.querySelector(".playBtn");
 const pauseBtn = document.querySelector(".pauseBtn");
 const replayBox = document.querySelector(".replaySection");
 const lostBox = document.querySelector(".lostSection");
 const wonBox = document.querySelector(".wonSection");
 const gameSection = document.querySelector(".gameSection");
-
 let timer = document.querySelector(".timer");
 let originReplay = document.querySelector(".originReplay");
 let lostReplay = document.querySelector(".lostReplay");
@@ -24,9 +24,15 @@ const ghostSound = new Audio("./sound/ghostClick.mp3");
 const winSound = new Audio("./sound/won.wav");
 const lostSound = new Audio("./sound/lost.wav");
 
-const numberOfPumpkins = 10;
-const numberOfGhosts = 10;
+let numberOfPumpkins = 7;
+let numberOfGhosts = 5;
 let timeLeft = 10;
+let level = 1;
+
+let Pumpkin = [];
+let item;
+let Ghost = [];
+let Ghost_COUNT = 5;
 
 introBtn.addEventListener("click", () => {
   readySection.style.display = "none";
@@ -37,7 +43,7 @@ introBtn.addEventListener("click", () => {
 
 playBtn.addEventListener("click", () => {
   playBtn.style.display = "none";
-  pauseBtn.style.display = 'block';
+  pauseBtn.style.display = "block";
   beforeGame.style.display = "none";
   gameSection.style.display = "block";
 
@@ -60,7 +66,6 @@ pauseBtn.addEventListener("click", () => {
   playSound(alertSound);
 });
 
-
 lostReplay.addEventListener("click", () => {
   lostBox.style.display = "none";
   gameRestart();
@@ -68,17 +73,15 @@ lostReplay.addEventListener("click", () => {
 
 wonReplay.addEventListener("click", () => {
   wonBox.style.display = "none";
+  nextLevel();
   gameRestart();
 });
 
 originReplay.addEventListener("click", () => {
   replayBox.style.display = "none";
+  initCounts();
   gameRestart();
 });
-
-
-let Pumpkin = [];
-let item;
 
 function whenPumpkinClicked() {
   Pumpkin.forEach((array) => {
@@ -105,8 +108,6 @@ function createPumpkin(className, count, imgPath) {
 
   whenPumpkinClicked();
 }
-
-let Ghost = [];
 
 // create ghosts automatically using for loop and push into ghosts array
 function createGhost(className, count, imgPath) {
@@ -136,7 +137,7 @@ function deactivatePumpkinsGhosts() {
   });
 }
 
-// position pumpkin and ghosts randomly 
+// position pumpkin and ghosts randomly
 function randomPosition() {
   createGhost("GhostImg", numberOfGhosts, "./img/ghost1.png");
   createPumpkin("PumpkinImg", numberOfPumpkins, "./img/pumpkin1.png");
@@ -181,6 +182,7 @@ function updateTimer() {
     document.querySelector(".timer").innerHTML = `0:${timeLeft}`;
   } else if (timeLeft == 0) {
     document.querySelector(".timer").innerHTML = `0:${timeLeft}`;
+    clearInterval(timer);
     showLostBox();
     playSound(lostSound);
     stopSound(bgSound);
@@ -198,10 +200,8 @@ function timerStart() {
   lostBox.style.display = "none";
 }
 
-let Ghost_COUNT = 10;
-
 function refreshGhostCount() {
-  Ghost_COUNT = 10;
+  Ghost_COUNT = numberOfGhosts;
   counterBtn.innerHTML = Ghost_COUNT;
 }
 
@@ -237,6 +237,8 @@ function GhostFind() {
 }
 
 function gameRestart() {
+  levelBtn.innerHTML = `Level ${level}`;
+  console.log(level);
   counterBtn.innerHTML = 0;
   timeLeft = 10;
   clearInterval(timer);
@@ -257,4 +259,16 @@ function playSound(sound) {
 
 function stopSound(sound) {
   sound.pause();
+}
+
+function initCounts() {
+  numberOfPumpkins = 7;
+  numberOfGhosts = 5;
+  level = 1;
+}
+
+function nextLevel() {
+  numberOfPumpkins++;
+  numberOfGhosts++;
+  level++;
 }
