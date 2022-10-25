@@ -104,6 +104,10 @@ body {
   transition: transform 0.2s ease-in;
 }
 
+.playBtn, .pauseBtn, .timer {
+  margin-bottom: 2%;
+}
+
 .playBtn:hover,
 .pauseBtn:hover,
 .replayBtn:hover,
