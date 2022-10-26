@@ -153,7 +153,7 @@ body {
   width: 300px;
   height: 100px;
   border-radius: 10px;
-  font-size: 30px;
+  font-size: 27px;
   padding-top: 3%;
   display: none;
   z-index: 1;
@@ -162,8 +162,9 @@ body {
 .beforeGame {
   padding: 3%;
   width: 400px;
-  height: 270px;
+  height: 230px;
 }
+
 
 .replayBtn {
   background-color: yellow;
