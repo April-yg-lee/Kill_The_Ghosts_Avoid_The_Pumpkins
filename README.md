@@ -1,7 +1,7 @@
 # KILL THE GHOSTS! AVOID THE PUMPKINS!
 ## Intro
 * I ceated the special PC game for Halloween season. 🎃
-* Please Enjoy with PC 👉https://april-yg-lee.github.io/Kill_The_Ghosts_Avoid_The_Pumpkins/
+* Please Enjoy this! 👉https://april-yg-lee.github.io/Kill_The_Ghosts_Avoid_The_Pumpkins/
 ## Language
 * HTML, CSS, JavaScript
 ## Preview
