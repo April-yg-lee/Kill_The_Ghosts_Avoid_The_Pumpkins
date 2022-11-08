@@ -90,7 +90,6 @@ body {
   transform: translateX(-310%);
 }
 
-
 .playBtn,
 .pauseBtn {
   font-size: 40px;
@@ -104,7 +103,9 @@ body {
   transition: transform 0.2s ease-in;
 }
 
-.playBtn, .pauseBtn, .timer {
+.playBtn,
+.pauseBtn,
+.timer {
   margin-bottom: 2%;
 }
 
@@ -165,7 +166,6 @@ body {
   height: 230px;
 }
 
-
 .replayBtn {
   background-color: yellow;
   color: black;
@@ -180,11 +180,10 @@ body {
   font-size: 20px;
   border-radius: 10px;
   background-color: yellow;
-  color:black;
+  color: black;
   font-weight: 700;
   cursor: pointer;
   transition: transform 0.2s ease-in;
-
 }
 
 .gameSection {

@@ -1,21 +1,17 @@
 "use strict";
 
 const introBtn = document.querySelector(".introBtn");
-const readySection = document.querySelector(".readySection");
-const bgSection = document.querySelector(".bgSection");
 const beforeGame = document.querySelector(".beforeGame");
-let counterBtn = document.querySelector(".counter");
-let levelBtn = document.querySelector(".level");
+const counterBtn = document.querySelector(".counter");
 const playBtn = document.querySelector(".playBtn");
 const pauseBtn = document.querySelector(".pauseBtn");
 const replayBox = document.querySelector(".replaySection");
 const lostBox = document.querySelector(".lostSection");
 const wonBox = document.querySelector(".wonSection");
 const gameSection = document.querySelector(".gameSection");
-let timer = document.querySelector(".timer");
-let originReplay = document.querySelector(".originReplay");
-let lostReplay = document.querySelector(".lostReplay");
-let wonReplay = document.querySelector(".wonReplay");
+const originReplay = document.querySelector(".originReplay");
+const lostReplay = document.querySelector(".lostReplay");
+const wonReplay = document.querySelector(".wonReplay");
 
 const clickBeforeGameSound = new Audio("./sound/clickBeforeGame.wav");
 const alertSound = new Audio("./sound/alert.wav");
@@ -26,6 +22,8 @@ const lostSound = new Audio("./sound/lost.wav");
 
 let numberOfPumpkins = 7;
 let numberOfGhosts = 5;
+
+let timer = document.querySelector(".timer");
 let timeLeft = 10;
 let level = 1;
 
@@ -35,6 +33,8 @@ let Ghost = [];
 let Ghost_COUNT = 5;
 
 introBtn.addEventListener("click", () => {
+  const readySection = document.querySelector(".readySection");
+  const bgSection = document.querySelector(".bgSection");
   readySection.style.display = "none";
   bgSection.style.display = "flex";
   beforeGame.style.display = "flex";
@@ -247,6 +247,7 @@ function GhostFind() {
 }
 
 function gameRestart() {
+  const levelBtn = document.querySelector(".level");
   levelBtn.innerHTML = `Level ${level}`;
   counterBtn.innerHTML = 0;
   timeLeft = 10;
